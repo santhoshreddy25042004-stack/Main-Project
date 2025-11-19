@@ -1,0 +1,17 @@
+# qRNG runtime dependencies
+# Tested with: Python 3.11
+
+# Core Qiskit metapackage (includes terra, aer, etc.)
+qiskit>=2.2.2
+
+# Qiskit Runtime (IBM Quantum runtime service client)
+qiskit-ibm-runtime>=0.43.1
+
+# Aer simulator (explicitly required for local fallback)
+qiskit-aer>=0.17.2
+
+# Optional: provider utilities (only if you use the older provider API)
+# qiskit-ibm-provider>=0.5.0
+
+# Pin pip-tools or virtualenv creation tools if you'd like reproducible envs
+# pip-tools>=6.0.0
