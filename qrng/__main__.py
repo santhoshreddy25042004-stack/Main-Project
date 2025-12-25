@@ -14,18 +14,32 @@ from . import (
     get_random_complex_rect,
 )
 
+
 def main():
     print("🔑 qRNG — Quantum Random Number Generator (Qiskit 2025+ Compatible)\n")
 
+    # -------------------------------------------------
+    # Load IBM API key
+    # -------------------------------------------------
     token = os.getenv("IBM_API_KEY")
     if token:
         print("✅ Loaded IBM key from .env")
     else:
-        token = input("Enter IBM Quantum API token (or press Enter for simulator): ").strip()
+        token = input(
+            "Enter IBM Quantum API token (or press Enter for simulator): "
+        ).strip()
 
+    # -------------------------------------------------
+    # Initialize provider & backend
+    # -------------------------------------------------
     set_provider_as_IBMQ(token if token else None)
-    set_backend("ibm_brisbane")
 
+    # 🔹 INTERACTIVE backend selection (UPDATED)
+    set_backend()
+
+    # -------------------------------------------------
+    # Menu
+    # -------------------------------------------------
     print("\nChoose random number type:")
     print("1. 32-bit integer")
     print("2. 64-bit integer")
@@ -36,6 +50,9 @@ def main():
     choice = input("\nEnter your choice (1–5): ").strip()
     print("\n🎲 Generating quantum random number...\n")
 
+    # -------------------------------------------------
+    # Output
+    # -------------------------------------------------
     if choice == "1":
         print(f"🔹 32-bit integer: {get_random_int32()}")
     elif choice == "2":
@@ -52,3 +69,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
